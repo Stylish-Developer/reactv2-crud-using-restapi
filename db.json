@@ -1,0 +1,12 @@
+{
+  "empProfile": [
+    {
+      "id": 1,
+      "name": "gautham",
+      "role": "software engineer",
+      "doj": "01-12-2021",
+      "email": "gowthamsampathkumar@outlook.com",
+      "workMode": "wfo"
+    }
+  ]
+}
