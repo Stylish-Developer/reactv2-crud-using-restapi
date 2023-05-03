@@ -1,0 +1,28 @@
+{
+  "empProfile": [
+    {
+      "id": 1,
+      "name": "Gowtham",
+      "role": "developer",
+      "doj": "2023-05-25",
+      "email": "gowtham@outlook.com",
+      "workMode": "wfo"
+    },
+    {
+      "id": 2,
+      "name": "gowtham",
+      "role": "manager",
+      "doj": "2023-05-13",
+      "email": "xyz@outlookc.com",
+      "workMode": "WFH"
+    },
+    {
+      "id": 3,
+      "name": "pravanthana ",
+      "role": "ceo",
+      "doj": "2023-05-17",
+      "email": "xyz@outlookc.com",
+      "workMode": "WFH"
+    }
+  ]
+}
