@@ -18,11 +18,11 @@
     },
     {
       "id": 3,
-      "name": "pravanthana ",
-      "role": "ceo",
-      "doj": "2023-05-17",
-      "email": "xyz@outlookc.com",
-      "workMode": "WFH"
+      "name": "jin",
+      "role": "developer",
+      "doj": "2023-05-12",
+      "email": "test@gmail.com",
+      "workMode": "wfh"
     }
   ]
 }
