@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import axiosInstance from "../../utils/BaseURL";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const [empList, setEmpList] = useState([]);
@@ -11,10 +12,10 @@ const Home = () => {
   }, []);
 
   const fetchData = async () => {
-    const response = await axiosInstance({
+    await axiosInstance({
       method: "get",
     })
-      .then((res) => res.data)
+      .then((res) => setEmpList(res.data))
       .catch((err) => {
         if (err.response) {
           //the server responded with a status code other than 200 range
@@ -25,7 +26,19 @@ const Home = () => {
         }
       });
 
-    setEmpList(response);
+    
+  };
+
+  const handleEmpDelete = async (id) => {
+    await axiosInstance({
+      method: "DELETE",
+      url: `${id}`,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then(() => fetchData())
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -37,6 +50,13 @@ const Home = () => {
           </div>
           <div className="row">
             <div className="col">
+              <Link
+                to="/employee/create"
+                className="btn btn-success btn-sm my-1"
+                role="button"
+              >
+                Add Employee (+)
+              </Link>
               <table className="table table-bordered">
                 <thead className="bg-black text-white">
                   <tr>
@@ -46,6 +66,7 @@ const Home = () => {
                     <th scope="col">Doj</th>
                     <th scope="col">Email</th>
                     <th scope="col">WorkMode</th>
+                    <th scope="col">Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -57,6 +78,29 @@ const Home = () => {
                       <td>{emp.doj}</td>
                       <td>{emp.email}</td>
                       <td>{emp.workMode}</td>
+                      <td>
+                        <Link
+                          className="btn btn-success btn-sm m-1"
+                          to={`employee/view/${emp.id}`}
+                          role="button"
+                        >
+                          view
+                        </Link>
+                        <Link
+                          className="btn btn-primary btn-sm m-1"
+                          to={`employee/update/${emp.id}`}
+                          role="button"
+                        >
+                          edit
+                        </Link>
+                        <Link
+                          className="btn btn-danger btn-sm m-1"
+                          onClick={() => handleEmpDelete(emp.id)}
+                          role="button"
+                        >
+                          delete
+                        </Link>
+                      </td>
                     </tr>
                   ))}
                 </tbody>
